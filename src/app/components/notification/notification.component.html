@@ -1,0 +1,5 @@
+<section [ngClass]="visible ? 'block' : 'hidden'" class="bg-danger p-3 flex items-center gap-1 rounded-xl text-white">
+    <hugeicons-icon [icon]="AlertDiamondIcon" [size]="26" [strokeWidth]="1.5"></hugeicons-icon>
+    <p>O item foi removido da lista</p>
+    <hugeicons-icon [icon]="Cancel01Icon" class="ms-auto cursor-pointer" [size]="26" [strokeWidth]="1.5" (click)="cancel()"></hugeicons-icon>
+</section>

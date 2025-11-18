@@ -1,0 +1,30 @@
+<app-base>
+
+    @if (lista.length === 0 || lista == null || lista == []) {
+    <div class="max-w-158 mx-auto text-center bg-white flex flex-col itens-center justify-center p-8 rounded-xl shadow">
+        <hugeicons-icon [icon]="ShoppingBasket" class="text-brand flex justify-center mb-1" [size]="34" [strokeWidth]="1.5"></hugeicons-icon>
+        <h1 class="text-brand font-bold text-2xl mb-3"> Sem lista cadastradas no momento </h1>
+        <p class="text-secondary"> Crie agora sua lista de compras </p>
+        <app-button class="mx-auto mt-6" [textBtn]="'Criar lista'" (click)="openModal()"></app-button>
+    </div>
+    }
+
+    
+    @if (lista.length > 0) {
+    <div class="flex flex-col gap-2 max-w-158 mx-auto">
+
+        <div class="flex items-center justify-between mb-6 px-4">
+            <h2 class="text-lg text-brand font-bold">Veja abaixo as lista criadas</h2>
+            <app-button class="ms-auto text-sm" [textBtn]="'Criar lista'" (click)="openModal()"></app-button>
+        </div>
+
+        @for (item of lista; track $index) {
+            <app-item-list [nome]="item.nome" [id]="item.id"></app-item-list>
+        }
+    </div>
+    }
+
+    <app-form-list *ngIf="modal"></app-form-list>
+    <hugeicons-icon *ngIf="modal" (click)="openModal()" [icon]="Cancel01Icon" class="fixed top-4 cursor-pointer right-4 text-white flex justify-center mb-1" [size]="34" [strokeWidth]="1.5"></hugeicons-icon>
+
+</app-base>

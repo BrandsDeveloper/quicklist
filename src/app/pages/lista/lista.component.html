@@ -1,0 +1,37 @@
+<app-base>
+
+    <div class="flex flex-col gap-2 max-w-158 mx-auto">
+
+        <a routerLink="/lista" class="flex items-center gap-1 text-brand">
+            <hugeicons-icon [icon]="ArrowLeft02Icon" class="text-brand" [size]="26" [strokeWidth]="1.5"></hugeicons-icon>
+            Voltar
+        </a> 
+
+        <h2 class="text-2xl text-primary font-bold mt-4"> {{ lista?.nome }} </h2>
+
+        <form #formItem novalidate class="flex gap-4 justify-between">
+            <input type="text"
+            [(ngModel)]="itens"
+            name="itens"
+            #itemRef="ngModel"
+            placeholder="Adicionar um novo item" 
+            class="border-2 border-bor-primary w-114 hover:border-bor-secondary focus:border-brand transition-all bg-white rounded-xl p-2 px-4">
+            <app-button textBtn="Adicionar item" (click)="addItem()"> </app-button>
+        </form>
+
+
+        <div class="flex flex-col gap-3 mt-6">
+            @for (item of lista?.itens; track $index) {
+               <article [ngClass]="notifications[$index] ? 'hidden' : 'block'" class="bg-white p-3 space-x-2 rounded-xl shadow-sm flex items-center w-full relative transition-all">
+                    <input type="checkbox" name="check" [id]="'check' + $index" class="cursor-pointer peer size-4 rounded-[5px] checked:bg-brand checked:not-focus:border-brand! focus:ring-brand focus:ring-2">
+                    <label class="text-primary peer-checked:line-through peer-checked:text-brand cursor-pointer" [for]="'check' + $index"> {{ item }} </label>
+                    <hugeicons-icon [icon]="Delete02Icon" class="ms-auto text-secondary hover:text-danger cursor-pointer" [size]="20" [strokeWidth]="1.5" (click)="removeItem($index)"></hugeicons-icon>
+                </article>
+                <app-notification [ngClass]="notifications[$index] ? 'block' : 'hidden'" class="transition-opacity duration-300"  [visible]="notifications[$index]" (visibleChange)="removeItem($index, false)"></app-notification>
+            }
+        </div>
+
+
+    </div>
+
+</app-base>

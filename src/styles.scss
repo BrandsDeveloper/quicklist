@@ -1,1 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
+@use "tailwindcss";
+
+// Import Font Inter
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --color-brand: #CA3884;
+  --color-brand-dark: #A52C6B;
+  --color-danger: #C93847;
+  --color-primary: #080B12;
+  --color-secondary: #374151;
+  --color-tertiary: #9CA3AF;
+  --color-gray: #F4F5FB;
+  --color-bor-primary: #D1D5DB;
+  --color-bor-secondary: #B9C2D0;
+  --color-white: #FFFFFF;
+}
+
+*{
+    font-family: var(--font-sans);
+}
+
+input{
+    outline: none;
+}
+
+body{ 
+    background-color: var(--color-gray);
+    color: var(--color-primary);
+}
+
+input[type="checkbox"]{
+    appearance: none;
+    print-color-adjust: exact;
+    vertical-align: middle;
+    user-select: none;
+    width: 1rem;
+    height: 1rem;
+    color: var(--color-brand);
+    position: relative;
+    border-color: var(--color-bor-primary);
+    border-width: 1px;
+    padding: 0px;
+}
+
+input[type=checkbox]:checked {
+    background-image: url("data:image/svg+xml,%3csvg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'%3e %3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 11.917 9.724 16.5 19 7.5'/%3e %3c/svg%3e");
+    background-repeat: no-repeat;
+    background-size: .90em .90em;
+}

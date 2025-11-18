@@ -1,0 +1,17 @@
+<section class="bg-gray-950/80 fixed inset-0 w-full h-full flex items-center justify-center p-10">
+    <div class="max-w-138 w-full mx-auto bg-gray-100 flex flex-col itens-center justify-center p-8 rounded-xl shadow">
+        <h2 class="text-brand text-2xl mb-4 text-center"> Criar lista de compras </h2>
+
+        <form #form="ngForm" novalidate>
+            <input type="text" 
+            [(ngModel)]="lista.nome"
+            #nomeRef="ngModel"
+            name="nomeLista"
+            placeholder="Nome da lista" 
+            class="w-full h-11 p-4 border-2 border-bor-primary hover:border-bor-secondary rounded-xl mb-6 focus:border-brand transition-all">
+
+            <button type="submit" (click)="submit()" class="w-full h-11 text-center text-white rounded-xl bg-brand hover:bg-brand-dark transition-all"> Adicionar </button>
+        </form>
+
+    </div>
+</section>
