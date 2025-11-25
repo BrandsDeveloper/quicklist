@@ -11,14 +11,18 @@
 
         <form #formItem novalidate class="flex gap-4 justify-between">
             <input type="text"
+            [ngClass]="{'border-danger' : input}"
             [(ngModel)]="itens"
-            name="itens"
             #itemRef="ngModel"
+            name="itens"
             placeholder="Adicionar um novo item" 
             class="border-2 border-bor-primary w-114 hover:border-bor-secondary focus:border-brand transition-all bg-white rounded-xl p-2 px-4">
             <app-button textBtn="Adicionar item" (click)="addItem()"> </app-button>
         </form>
 
+        @if(input){
+            <p class="text-danger text-sm">Preencha o campo acima</p>
+        }
 
         <div class="flex flex-col gap-3 mt-6">
             @for (item of lista?.itens; track $index) {

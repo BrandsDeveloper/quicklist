@@ -25,6 +25,7 @@ export class ListaComponent implements OnInit{
   id: string | null = null;
   lista: ListaCompras | undefined;
   itens!: string;
+  input: boolean = false;
 
   notifications: boolean[] = [];
 
@@ -80,8 +81,12 @@ export class ListaComponent implements OnInit{
   addItem(){
     if(!this.lista) return;
 
-    console.log(this.lista);
-
+    if(this.itens === '' || this.itens === undefined){
+      this.input = true;
+      return;
+    }
+    
+    this.input = false;
     this.lista.itens.push(this.itens);
     this.compras.updateLista(this.lista.id, this.lista.itens);
     this.itens = '';
