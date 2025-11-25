@@ -22,10 +22,12 @@
 
         <div class="flex flex-col gap-3 mt-6">
             @for (item of lista?.itens; track $index) {
-               <article [ngClass]="notifications[$index] ? 'hidden' : 'block'" class="bg-white p-3 space-x-2 rounded-xl shadow-sm flex items-center w-full relative transition-all">
-                    <input type="checkbox" name="check" [id]="'check' + $index" class="cursor-pointer peer size-4 rounded-[5px] checked:bg-brand checked:not-focus:border-brand! focus:ring-brand focus:ring-2">
-                    <label class="text-primary peer-checked:line-through peer-checked:text-brand cursor-pointer" [for]="'check' + $index"> {{ item }} </label>
-                    <hugeicons-icon [icon]="Delete02Icon" class="ms-auto text-secondary hover:text-danger cursor-pointer" [size]="20" [strokeWidth]="1.5" (click)="removeItem($index)"></hugeicons-icon>
+               <article [ngClass]="notifications[$index] ? 'hidden' : 'block'" class="bg-white p-3 rounded-xl shadow-sm w-full relative transition-all">
+                    <label class="text-primary cursor-pointer flex items-center space-x-2" [for]="'check' + $index"> 
+                        <input type="checkbox" name="check" [id]="'check' + $index" class="peer cursor-pointer size-4 rounded-[5px] checked:bg-brand checked:not-focus:border-brand! focus:ring-brand focus:ring-2">
+                        <span class="peer-checked:line-through peer-checked:text-brand"> {{ item }} </span>
+                        <hugeicons-icon [icon]="Delete02Icon" class="ms-auto text-secondary hover:text-danger cursor-pointer" [size]="20" [strokeWidth]="1.5" (click)="removeItem($index)"></hugeicons-icon>
+                    </label>
                 </article>
                 <app-notification [ngClass]="notifications[$index] ? 'block' : 'hidden'" class="transition-opacity duration-300"  [visible]="notifications[$index]" (visibleChange)="removeItem($index, false)"></app-notification>
             }
